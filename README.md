@@ -76,11 +76,36 @@ Em seguida, adicione o arquivo gerado `index.html` no seu fork.
 
 Por fim, responda as questões abaixo no seu `fork`: 
 
-1. Repositório selecionado: <URL_DO_REPOSITORIO_SELECIONADO_AQUI>
+1. Repositório selecionado: https://github.com/django/django
 
-2. Gráfico selecionado: <NOME_DO_GRAFICO_SELECIONADO_AQUI>
+2. Gráfico selecionado: Control flows
+
+![alt text](control-flows.png)
   
-3. Explicação: <EXPLICACAO_AQUI>
+3. Explicação:
 
+Como Django é uma plataforma antiga, decidi aumentar a data de análise para o início desde sua criação, em 2005 usando o comando:
 
+```
+$ gitevo --from-year 2005 --to-year 2025 https://github.com/django/django
+```
 
+Analisando o gráfico "Control flows", podemos observar como o uso de diferentes estruturas de controle evoluiu no Django durante seus 20 anos de existência.
+
+O que mais me chamou atenção foi o comportamento da linha rosa (with_statement), que era inexistente até 2010, mas depois teve um crescimento impressionante, tornando-se a segunda estrutura mais utilizada em 2025. Isso faz sentido porque o with só se tornou uma palavra-chave oficial do Python, e foi adotado no Django alguns anos depois.
+
+Quando comecei a programar em Python, aprendi que o with é útil para gerenciar recursos como arquivos, conexões de banco de dados ou locks, garantindo que sejam fechados corretamente mesmo quando ocorrem erros. Por exemplo:
+
+```shell
+with open('arquivo.txt', 'r') as f:
+    conteudo = f.read()
+    # O arquivo será fechado automaticamente ao sair do bloco
+```
+
+Também é interessante notar que o if_statement (linha azul) sempre foi a estrutura de controle predominante. No entanto, sua taxa de crescimento diminuiu por volta de 2012-2013, mantendo-se relativamente estável até 2018, quando voltou a crescer.
+
+Os loops for (linha laranja) tiveram um crescimento constante mas moderado, enquanto os loops while (linha verde-água) permaneceram em números muito baixos. Isso confirma o que em Python, geralmente preferimos usar for do que while quando possível.
+
+Outro ponto notável é a estabilidade do uso de while_statement, mantendo-se em níveis baixos e constantes em todo o período, o que indica que o Django prefere outras estruturas de iteração, como for_statement, que apresenta números significativamente maiores.
+
+A introdução mais recente do match_statement aparece apenas em 2024, com apenas duas instâncias, mostrando que o Django adota novas funcionalidades da linguagem de forma cautelosa e gradual.
